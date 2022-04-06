@@ -14,7 +14,14 @@ class CreateRoleUserPivotTable extends Migration
     public function up()
     {
         Schema::create('role_user_pivot', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('CASCADE');
+            $table->foreignId('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('CASCADE');
             $table->timestamps();
         });
     }

@@ -13,8 +13,15 @@ class CreatePermissionRolePivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('permission_role_pivot', function (Blueprint $table) {
-            $table->id();
+        Schema::create('permission_role', function (Blueprint $table) {
+            $table->foreignId('role_id')
+                ->references('id')
+                ->on('roles')
+                ->onDelete('CASCADE');
+            $table->foreignId('permission_id')
+                ->references('id')
+                ->on('permissions')
+                ->onDelete('CASCADE');
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ class CreatePermissionRolePivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permission_role_pivot');
+        Schema::dropIfExists('permission_role');
     }
 }
