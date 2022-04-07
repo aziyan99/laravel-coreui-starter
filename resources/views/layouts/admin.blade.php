@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{{ asset('css/vendors/simplebar.css') }}">
         <!-- Main styles for this application-->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        @stack('styles')
     </head>
 
     <body>
@@ -147,6 +148,7 @@
                 return new coreui.Tooltip(tooltipTriggerEl)
             });
         </script>
+        @stack('scripts')
     </body>
 
 </html>

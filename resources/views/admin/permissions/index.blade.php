@@ -13,7 +13,7 @@
 
 @section('main')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-md-12">
             <a href="{{ route('permissions.create') }}" class="btn btn-primary btn-sm mb-2">
                 <svg class="icon icon-sm me-1">

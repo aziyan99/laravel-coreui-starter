@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -10,14 +11,15 @@ class RoleController extends Controller
 {
     public function index()
     {
-        $roles = Role::all();
+        $roles = Role::with('permissions')->get();
         return view('admin.roles.index', compact('roles'));
     }
 
     public function create()
     {
         $role = new Role();
-        return view('admin.roles.create', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.roles.create', compact('role', 'permissions'));
     }
 
     public function store(Request $request)
@@ -25,15 +27,17 @@ class RoleController extends Controller
         $request->validate([
             'title' => 'required|unique:roles,title'
         ]);
-        Role::create([
+        $role = Role::create([
             'title' => $request->title
         ]);
+        $role->permissions()->sync($request->permissions, []);
         return redirect()->route('roles.index');
     }
 
     public function edit(Role $role)
     {
-        return view('admin.roles.edit', compact('role'));
+        $permissions = Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     public function update(Request $request, Role $role)
@@ -41,9 +45,11 @@ class RoleController extends Controller
         $request->validate([
             'title' => 'required|unique:roles,title,' . $role->id
         ]);
+        // dd($request->all());
         $role->update([
             'title' => $request->title
         ]);
+        $role->permissions()->sync($request->permissions);
         return redirect()->route('roles.index');
     }
 

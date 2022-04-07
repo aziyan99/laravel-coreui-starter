@@ -13,7 +13,7 @@
 
 @section('main')
 <div class="container-fluid">
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-md-12">
             <a href="{{ route('roles.create') }}" class="btn btn-primary btn-sm mb-2">
                 <svg class="icon icon-sm me-1">
@@ -29,6 +29,7 @@
                         <tr>
                             <th>{{ __('No.') }}</th>
                             <th>{{ __('Nama') }}</th>
+                            <th>{{ __('Permissions') }}</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -37,6 +38,11 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $role->title }}</td>
+                                    <td>
+                                        @foreach ($role->permissions as $permission)
+                                            <span class="badge bg-info">{{ $permission->title }}</span>
+                                        @endforeach
+                                    </td>
                                     <td>
                                         <a href="{{ route('roles.edit', $role) }}" class="btn btn-secondary btn-sm"
                                         data-coreui-toggle="tooltip" data-coreui-placement="top" data-coreui-original-title="{{ __('Edit') }}">

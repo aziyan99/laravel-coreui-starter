@@ -13,7 +13,7 @@ class CreateRoleUserPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_user_pivot', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->foreignId('user_id')
                 ->references('id')
                 ->on('users')
@@ -33,6 +33,6 @@ class CreateRoleUserPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_user_pivot');
+        Schema::dropIfExists('role_user');
     }
 }
