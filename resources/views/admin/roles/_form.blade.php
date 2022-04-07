@@ -8,7 +8,10 @@
     @enderror
 </div>
 <div class="mb-3">
-    <label for="permission" class="form-label">{{ __('Permission') }}</label>
+    <label for="permission" class="form-label">{{ __('Permission') }}
+    <span class="btn btn-info btn-sm select-all text-white">{{ __('Pilih semua') }}</span>
+    <span class="btn btn-info btn-sm deselect-all text-white">{{ __('Hapus semua') }}</span>
+    </label>
     <select id="permission" name="permissions[]" multiple="multiple" class="form-select @error('title')
     is-invalid
     @enderror">

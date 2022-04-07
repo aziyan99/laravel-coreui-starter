@@ -59,6 +59,15 @@
     $(document).ready(function () {
         $('#permission').select2();
     });
-
+    $('.select-all').click(function () {
+        let $select2 = $(this).parent().siblings('#permission')
+        $select2.find('option').prop('selected', 'selected')
+        $select2.trigger('change')
+    });
+    $('.deselect-all').click(function () {
+        let $select2 = $(this).parent().siblings('#permission')
+        $select2.find('option').prop('selected', '')
+        $select2.trigger('change')
+    });
 </script>
 @endpush

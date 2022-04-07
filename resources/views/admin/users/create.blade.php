@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Tambah pengguna')
 
 @section('breadcump')
 <li class="breadcrumb-item">
     <a href="#">Dashboard</a>
 </li>
 <li class="breadcrumb-item">
-    <a href="{{ route('roles.index') }}">{{ __('Role') }}</a>
+    <a href="{{ route('users.index') }}">{{ __('Pengguna') }}</a>
 </li>
 <li class="breadcrumb-item active">
-    <a href="javascript:void(0);">{{ __('Edit role') }}</a>
+    <a href="javascript:void(0);">{{ __('Tambah pengguna') }}</a>
 </li>
 @endsection
 
@@ -19,12 +19,11 @@
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <div class="card">
-                <div class="card-header">{{ __('Edit role') }}</div>
+                <div class="card-header">{{ __('Tambah pengguna') }}</div>
                 <div class="card-body">
-                    <form action="{{ route('roles.update', $role) }}" method="POST">
+                    <form action="{{ route('users.store') }}" method="POST">
                         @csrf
-                        @method('PUT')
-                        @include('admin.roles._form')
+                        @include('admin.users._form')
                         <div class="mb-2">
                             <button class="btn btn-primary btn-sm">
                                 <svg class="icon icon-sm me-1">
@@ -32,7 +31,7 @@
                                 </svg>
                                 {{ __('Simpan') }}
                             </button>
-                            <a href="{{ route('roles.index') }}" class="btn btn-secondary btn-sm">
+                            <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">
                                 <svg class="icon icon-sm me-1">
                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-arrow-left') }}"></use>
                                 </svg>
@@ -57,15 +56,15 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('#permission').select2();
+        $('#role').select2();
     });
     $('.select-all').click(function () {
-        let $select2 = $(this).parent().siblings('#permission')
+        let $select2 = $(this).parent().siblings('#role')
         $select2.find('option').prop('selected', 'selected')
         $select2.trigger('change')
     });
     $('.deselect-all').click(function () {
-        let $select2 = $(this).parent().siblings('#permission')
+        let $select2 = $(this).parent().siblings('#role')
         $select2.find('option').prop('selected', '')
         $select2.trigger('change')
     });

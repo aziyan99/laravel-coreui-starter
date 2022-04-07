@@ -30,15 +30,18 @@
                     height="46">
             </div>
             <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+                @can('dashboard_view')
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="{{ route('dashboard.index') }}">
                         <svg class="nav-icon">
                             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
-                        </svg> Dashboard
+                        </svg> {{ __('Dashboard') }}
                         <span class="badge badge-sm bg-info ms-auto">NEW</span>
                     </a>
                 </li>
+                @endcan
                 <li class="nav-title">{{ __('Sistem') }}</li>
+                @can('role_view')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('roles.index') }}">
                         <svg class="nav-icon">
@@ -47,6 +50,8 @@
                         {{ __('Role') }}
                     </a>
                 </li>
+                @endcan
+                @can('permission_view')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('permissions.index') }}">
                         <svg class="nav-icon">
@@ -55,14 +60,17 @@
                         {{ __('Permission') }}
                     </a>
                 </li>
+                @endcan
+                @can('user_view')
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('users.index') }}">
                         <svg class="nav-icon">
                             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-people') }}"></use>
                         </svg>
                         {{ __('Pengguna') }}
                     </a>
                 </li>
+                @endcan
             </ul>
             <div class="sidebar-toggler"></div>
         </div>
@@ -110,7 +118,8 @@
                                     </svg>
                                     {{ __('Profile') }}
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
                                     <svg class="icon me-2">
                                         <use
                                             xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}">
@@ -118,6 +127,10 @@
                                     </svg>
                                     {{ __('Logout') }}
                                 </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
                     </ul>
@@ -147,6 +160,7 @@
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new coreui.Tooltip(tooltipTriggerEl)
             });
+
         </script>
         @stack('scripts')
     </body>
