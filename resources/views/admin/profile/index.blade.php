@@ -20,6 +20,28 @@
                         {{ __('Gambar') }}
                     </div>
                     <div class="card-body">
+                        <div class="text-center mb-2">
+                            <img src="{{ (auth()->user()->avatar != null) ? asset('storage/' . auth()->user()->avatar) : 'https://ui-avatars.com/api/?size=256&background=0D8ABC&color=fff&name=' . auth()->user()->name }}" alt="img" class="img-thumbnail">
+                        </div>
+                        <form action="{{ route('profile.avatar.update', auth()->user()) }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                                <div class="mb-3">
+                                <input type="file" name="avatar" class="form-control @error('avatar') is-invalid @enderror">
+                                @error('avatar')
+                                <small class="invalid-feedback" role="alert">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-sm btn-primary" type="submit">
+                                    <svg class="icon icon-sm me-1">
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
+                                    </svg>
+                                    {{ __('Simpan') }}
+                                </button>
+                            </div>
+                        </form>
+                        <hr>
                         <div class="mt-2 mb-2">
                             @foreach(auth()->user()->roles as $role)
                                 <span class="badge bg-info">{{ $role->title }}</span>

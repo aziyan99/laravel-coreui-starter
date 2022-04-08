@@ -106,7 +106,7 @@
                             <a class="nav-link py-0" data-coreui-toggle="dropdown" href="javascript:void(0);"
                                 role="button" aria-haspopup="true" aria-expanded="false">
                                 <div class="avatar avatar-md"><img class="avatar-img"
-                                        src="https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=Laravel+Admin"
+                                        src="{{ (auth()->user()->avatar != null) ? asset('storage/' . auth()->user()->avatar) : 'https://ui-avatars.com/api/?size=256&background=0D8ABC&color=fff&name=' . auth()->user()->name }}"
                                         alt="img"></div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end pt-0">
