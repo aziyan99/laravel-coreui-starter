@@ -31,4 +31,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('/roles', RoleController::class)->except('show');
     Route::resource('/permissions', PermissionController::class)->except('show');
     Route::resource('/users', UserController::class);
+    Route::put('/users/reset/{user}/password', [UserController::class, 'resetPassword'])->name('users.reset.password');
 });

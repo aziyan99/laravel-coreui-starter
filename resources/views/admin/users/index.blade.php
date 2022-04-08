@@ -49,10 +49,18 @@
                                     </td>
                                     <td>
                                         @can('user_update')
-                                        <a href="{{ route('users.edit', $user) }}" class="btn btn-secondary btn-sm"
+                                        <a href="{{ route('users.edit', $user) }}" class="btn btn-secondary btn-sm text-white"
                                         data-coreui-toggle="tooltip" data-coreui-placement="top" data-coreui-original-title="{{ __('Edit') }}">
                                             <svg class="icon icon-sm">
                                                 <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-pencil') }}"></use>
+                                            </svg>
+                                        </a>
+                                        @endcan
+                                        @can('user_update')
+                                        <a href="{{ route('users.show', $user) }}" class="btn btn-info btn-sm text-white"
+                                        data-coreui-toggle="tooltip" data-coreui-placement="top" data-coreui-original-title="{{ __('Detail') }}">
+                                            <svg class="icon icon-sm">
+                                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-file') }}"></use>
                                             </svg>
                                         </a>
                                         @endcan
@@ -61,7 +69,7 @@
                                         onsubmit="return confirm('{{ __('Hapus data ini?') }}')">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-sm btn-danger" type="submit"
+                                            <button class="btn btn-sm btn-danger text-white" type="submit"
                                             data-coreui-toggle="tooltip" data-coreui-placement="top" data-coreui-original-title="{{ __('Hapus') }}">
                                                 <svg class="icon icon-sm">
                                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-trash') }}"></use>
