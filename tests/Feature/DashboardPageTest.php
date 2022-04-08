@@ -43,7 +43,8 @@ class DashboardPageTest extends TestCase
             'email'    => 'username@example.net',
             'password' => 'secret',
         ]);
-        // after login redirect
+
+        $this->visit('/admin/dashboard');
         $this->seePageIs('/admin/dashboard')->seeText('Dashboard');
     }
 }
