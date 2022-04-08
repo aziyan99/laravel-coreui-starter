@@ -34,5 +34,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('/users', UserController::class);
     Route::put('/users/reset/{user}/password', [UserController::class, 'resetPassword'])->name('users.reset.password');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profile/{user}/update_password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
     Route::put('/profile/{user}', [ProfileController::class, 'updateGeneralData'])->name('profile.update');
 });

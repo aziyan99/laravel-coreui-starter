@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -21,6 +22,17 @@ class ProfileController extends Controller
         ]);
 
         $user->update($request->only('name', 'email'));
+        return back();
+    }
+
+    public function updatePassword(Request $request, User $user)
+    {
+        $request->validate([
+            'password' => 'required|min:5|confirmed'
+        ]);
+        $user->update([
+            'password' => Hash::make($request->password)
+        ]);
         return back();
     }
 }

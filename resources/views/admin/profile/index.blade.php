@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="card">
+                <div class="card  mb-2">
                     <div class="card-header">
                         {{ __('Gambar') }}
                     </div>
@@ -28,6 +28,37 @@
                         <div class="mt-2 mb-2">
                             <i class="text-muted">{{ __('Terdaftar sejak') }} {{ auth()->user()->created_at->diffForHumans() }}</i>
                         </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        {{ __('Edit password') }}
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('profile.password.update', auth()->user()) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-3">
+                                <label for="password" class="form-label">{{ __('Password baru') }}</label>
+                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
+                                @error('password')
+                                <small class="invalid-feedback" role="alert">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="password_confirmation" class="form-label">{{ __('Ulangi password baru') }}</label>
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <button class="btn btn-primary btn-sm" type="submit">
+                                    <svg class="icon icon-sm me-1">
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
+                                    </svg>
+                                    {{ __('Simpan') }}
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
