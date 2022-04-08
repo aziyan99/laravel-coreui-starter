@@ -110,7 +110,7 @@
                                         alt="img"></div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end pt-0">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('profile.index') }}">
                                     <svg class="icon me-2">
                                         <use
                                             xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-lock-locked') }}">
