@@ -4,22 +4,60 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Blade;
 use Symfony\Component\HttpFoundation\Response;
+use Yajra\DataTables\DataTables;
 
 class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View|\Illuminate\Http\Response
+     * @throws Exception
      */
-    public function index()
+    public function index(Request $request)
     {
         abort_if(Gate::denies('permission_view'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $permissions = Permission::all();
-        return view('admin.permissions.index', compact('permissions'));
+        if ($request->ajax()) {
+            $permissions = Permission::latest()->get();
+            return DataTables::of($permissions)
+                ->addColumn('Aksi', function ($permission) {
+                    return Blade::render('
+                    @can("permission_update")
+                    <a href="{{ route("permissions.edit", $permission) }}"
+                    class="btn btn-secondary btn-sm" data-coreui-toggle="tooltip"
+                    data-coreui-placement="top" data-coreui-original-title="{{ __("Edit") }}">
+                        <svg class="icon icon-sm">
+                            <use
+                                xlink:href="{{ asset("vendors/@coreui/icons/svg/free.svg#cil-pencil") }}">
+                            </use>
+                        </svg>
+                     </a>
+                     @endcan
+                     @can("permission_delete")
+                         <a class="btn btn-sm btn-danger text-white delete-btn" data-coreui-toggle="tooltip"
+                         data-id="{{ $permission->id }}"
+                         data-coreui-placement="top" data-coreui-original-title="{{ __("Hapus") }}">
+                             <svg class="icon icon-sm">
+                                 <use
+                                 xlink:href="{{ asset("vendors/@coreui/icons/svg/free.svg#cil-trash") }}">
+                                 </use>
+                             </svg>
+                         </a>
+                     @endcan
+                    ', ['permission' => $permission]);
+                })
+                ->rawColumns(['Aksi'])
+                ->make(true);
+        }
+        return view('admin.permissions.index');
     }
 
     /**
