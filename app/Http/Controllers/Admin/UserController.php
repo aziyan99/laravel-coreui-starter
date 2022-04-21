@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        abort_if(Gate::denies('user_view'), Response::HTTP_FORBIDDEN, '403 Forbidden');//{{ route("users.destroy", $user) }}
+        // abort_if(Gate::denies('user_view'), Response::HTTP_FORBIDDEN, '403 Forbidden');//{{ route("users.destroy", $user) }}
         if ($request->ajax()) {
             $users = User::all();
             return DataTables::of($users)
