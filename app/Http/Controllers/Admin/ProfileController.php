@@ -25,6 +25,7 @@ class ProfileController extends Controller
         ]);
 
         $user->update($request->only('name', 'email'));
+        toast('Profile updated','success');
         return back();
     }
 
@@ -36,6 +37,7 @@ class ProfileController extends Controller
         $user->update([
             'password' => Hash::make($request->password)
         ]);
+        toast('Password updated','success');
         return back();
     }
 
@@ -65,6 +67,7 @@ class ProfileController extends Controller
         $user->update([
             'avatar' => 'profile_images/' . $newFileName
         ]);
+        toast('Avatar updated','success');
         return back();
     }
 }

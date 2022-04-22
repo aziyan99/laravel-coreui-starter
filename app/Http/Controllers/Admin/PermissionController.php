@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Blade;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\DataTables;
 
+
 class PermissionController extends Controller
 {
     /**
@@ -87,6 +88,7 @@ class PermissionController extends Controller
         Permission::create([
             'title' => $request->title
         ]);
+        toast('Permission saved','success');
         return redirect()->route('permissions.index');
     }
 
@@ -118,6 +120,7 @@ class PermissionController extends Controller
         $permission->update([
             'title' => $request->title,
         ]);
+        toast('Permission updated','success');
         return redirect()->route('permissions.index');
     }
 
@@ -131,6 +134,7 @@ class PermissionController extends Controller
     {
         abort_if(Gate::denies('permission_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $permission->delete();
+        toast('Permission deleted','success');
         return redirect()->route('permissions.index');
     }
 }

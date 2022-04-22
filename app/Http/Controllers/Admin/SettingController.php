@@ -37,6 +37,7 @@ class SettingController extends Controller
         $this->setting->update([
             'web_name' => $request->web_name
         ]);
+        toast('General data updated','success');
         return back();
     }
 
@@ -67,6 +68,7 @@ class SettingController extends Controller
         $this->setting->update([
             'logo' => 'logo/' . $newFileName
         ]);
+        toast('Logo updated','success');
         return back();
     }
 }

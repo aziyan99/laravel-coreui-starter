@@ -108,6 +108,7 @@ class UserController extends Controller
             'password' => Hash::make($request->email)
         ]);
         $user->roles()->sync($request->roles);
+        toast('User saved','success');
         return redirect()->route('users.index');
     }
 
@@ -155,6 +156,7 @@ class UserController extends Controller
             'email' => $request->email,
         ]);
         $user->roles()->sync($request->roles);
+        toast('User updated','success');
         return redirect()->route('users.index');
     }
 
@@ -168,6 +170,7 @@ class UserController extends Controller
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $user->delete();
+        toast('User deleted','success');
         return redirect()->route('users.index');
     }
 
@@ -183,6 +186,7 @@ class UserController extends Controller
         $user->update([
             'password' => Hash::make($user->email)
         ]);
+        toast('Password reseted','success');
         return back();
     }
 }

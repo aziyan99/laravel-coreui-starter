@@ -76,6 +76,7 @@ class RoleController extends Controller
             'title' => $request->title
         ]);
         $role->permissions()->sync($request->permissions, []);
+        toast('Role saved','success');
         return redirect()->route('roles.index');
     }
 
@@ -97,6 +98,7 @@ class RoleController extends Controller
             'title' => $request->title
         ]);
         $role->permissions()->sync($request->permissions);
+        toast('Role updated','success');
         return redirect()->route('roles.index');
     }
 
@@ -104,6 +106,7 @@ class RoleController extends Controller
     {
         abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $role->delete();
+        toast('Role deleted','success');
         return redirect()->route('roles.index');
     }
 }
