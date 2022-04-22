@@ -95,8 +95,6 @@
                     'copy', 'excel', 'csv', 'pdf', 'print'
                 ],
                 lengthMenu: [[10, 25, 50, 100, 500, -1], [10, 25, 50, 100, 500, "All"]],
-                fixedHeader: true,
-                scrollY: 400,
                 responsive: true,
                 processing: true,
                 serverSide: true,
