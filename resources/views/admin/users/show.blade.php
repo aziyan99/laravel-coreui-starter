@@ -21,8 +21,10 @@
             <div class="card">
                 <div class="card-header">{{ __('Detail pengguna') }}</div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4"></div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 text-center">
+                            <img src="{{ ($user->avatar == null) ? 'https://ui-avatars.com/api/?size=256&background=0D8ABC&color=fff&name=' . $user->name : asset($user->avatar) }}" alt="img" class="img-thumbnail">
+                        </div>
                         <div class="col-md-8">
                             <table class="table table-sm table-hover table-bordered">
                                 <tr>
