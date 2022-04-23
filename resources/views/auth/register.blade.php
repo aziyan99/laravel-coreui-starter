@@ -70,7 +70,7 @@
                                     name="password_confirmation" required autocomplete="new-password"
                                     placeholder="{{ __('Repeat password') }}">
                             </div>
-                            <button class="btn btn-block btn-success" type="submit">{{ __('Daftar akun') }}</button>
+                            <button class="btn btn-block btn-primary" type="submit">{{ __('Register') }}</button>
                         </form>
                     </div>
                 </div>

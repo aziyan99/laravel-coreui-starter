@@ -10,7 +10,7 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'web_name', 'logo'
+        'web_name', 'logo', 'reset_password_enabled', 'register_enabled'
     ];
 
     public function getLogoAttribute($value)

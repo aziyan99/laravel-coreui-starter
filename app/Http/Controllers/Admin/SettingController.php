@@ -35,7 +35,9 @@ class SettingController extends Controller
         ]);
         $this->setting = Setting::first();
         $this->setting->update([
-            'web_name' => $request->web_name
+            'web_name' => $request->web_name,
+            'reset_password_enabled' => ($request->reset_password_enabled != "") ? 1 : 0,
+            'register_enabled' => ($request->register_enabled != "") ? 1 : 0
         ]);
         toast('General data updated','success');
         return back();

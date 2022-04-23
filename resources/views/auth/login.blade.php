@@ -76,8 +76,10 @@
                                 <h2>Lorem</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua.</p>
+                                @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="btn btn-lg btn-outline-light mt-3" type="button">Register
                                     Now!</a>
+                                @endif
                             </div>
                         </div>
                     </div>

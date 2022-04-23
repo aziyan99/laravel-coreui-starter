@@ -30,6 +30,14 @@
                                 <small class="invalid-feedback" role="alert">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" id="register_enabled" type="checkbox" name="register_enabled" {{ ($settingData->register_enabled == 1) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="register_enabled">{{ __('User Registration') }}</label>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" id="reset_password_enabled" type="checkbox" name="reset_password_enabled" {{ ($settingData->reset_password_enabled == 1) ? 'checked' : '' }}>
+                                <label class="form-check-label" for="reset_password_enabled">{{ __('User Forgot Password') }}</label>
+                            </div>
                             <div class="mb-2">
                                 <button class="btn btn-primary btn-sm">
                                     <svg class="icon icon-sm me-1">

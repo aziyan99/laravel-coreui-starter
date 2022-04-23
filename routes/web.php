@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,11 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+$settingData = Setting::first();
 Auth::routes([
-    'reset' => false,
-    'verify' => false,
+    'reset' => !(($settingData->reset_password_enabled == 0)),
+    'register' => !(($settingData->register_enabled == 0)),
+    'verify' => true,
 ]);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
