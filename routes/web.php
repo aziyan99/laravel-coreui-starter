@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Database\QueryException;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +25,16 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-$settingData = Setting::first();
-Auth::routes([
-    'reset' => !(($settingData->reset_password_enabled == 0)),
-    'register' => !(($settingData->register_enabled == 0)),
-    'verify' => true,
-]);
+try {
+    $settingData = Setting::first();
+    Auth::routes([
+        'reset' => !(($settingData->reset_password_enabled == 0)),
+        'register' => !(($settingData->register_enabled == 0)),
+        'verify' => true,
+    ]);
+} catch (QueryException $e) {
+    return;
+}
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
