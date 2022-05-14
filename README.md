@@ -1,8 +1,8 @@
 <p align="center"><a href="javascript:void(0);" target="_blank"><img src="https://i.ibb.co/qBHySrq/laravel-coreui-logo.png" width="100"></a></p>
 
 <p align="center">
-<img src="https://img.shields.io/github/issues/aziyan99/laravel-coreui-starter">
-<img src="https://img.shields.io/github/stars/aziyan99/laravel-coreui-starter">
+<img src="https://img.shields.io/github/issues/aziyan99/laravel-coreui-starter/">
+<img src="https://img.shields.io/github/stars/aziyan99/laravel-coreui-starter/">
 </p>
 
 
