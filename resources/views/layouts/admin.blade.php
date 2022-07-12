@@ -94,7 +94,7 @@
                 </a>
             </li>
     </ul>
-    <div class="sidebar-toggler"></div>
+    <div class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></div>
 </div>
 <div class="wrapper d-flex flex-column min-vh-100 bg-light">
     <header class="header header-sticky mb-4">
