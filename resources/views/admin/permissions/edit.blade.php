@@ -26,17 +26,11 @@
                         @method('PUT')
                         @include('admin.permissions._form')
                         <div class="mb-2">
-                            <button class="btn btn-primary btn-sm">
-                                <svg class="icon icon-sm me-1">
-                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
-                                </svg>
-                                {{ __('Simpan') }}
+                            <button class="btn btn-primary px-3">
+                                <b>{{ __('Simpan') }}</b>
                             </button>
-                            <a href="{{ route('permissions.index') }}" class="btn btn-secondary btn-sm">
-                                <svg class="icon icon-sm me-1">
-                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-arrow-left') }}"></use>
-                                </svg>
-                                {{ __('Kembali') }}
+                            <a href="{{ route('permissions.index') }}" class="btn btn-default px-3">
+                                <b>{{ __('Kembali') }}</b>
                             </a>
                         </div>
                     </form>

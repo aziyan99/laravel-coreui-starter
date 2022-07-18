@@ -50,20 +50,14 @@
                             </table>
                         </div>
                     </div>
-                    <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm text-white">
-                        <svg class="icon icon-sm me-1">
-                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-arrow-left') }}"></use>
-                        </svg>
-                        {{ __('Kembali') }}
+                    <a href="{{ route('users.index') }}" class="btn btn-default px-3">
+                        <b>{{ __('Kembali') }}</b>
                     </a>
                     <form action="{{ route('users.reset.password', $user) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Reset password pengguna?')">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-danger btn-sm text-white" type="submit">
-                            <svg class="icon icon-sm me-1">
-                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-lock-locked') }}"></use>
-                            </svg>
-                            {{ __('Reset password') }}
+                        <button class="btn btn-danger px-3 text-white" type="submit">
+                            <b>{{ __('Reset password') }}</b>
                         </button>
                     </form>
                 </div>

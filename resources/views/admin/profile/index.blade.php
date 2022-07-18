@@ -33,11 +33,8 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-sm btn-primary" type="submit">
-                                    <svg class="icon icon-sm me-1">
-                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
-                                    </svg>
-                                    {{ __('Simpan') }}
+                                <button class="btn px-3 btn-primary" type="submit">
+                                    <b>{{ __('Simpan') }}</b>
                                 </button>
                             </div>
                         </form>
@@ -73,11 +70,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <button class="btn btn-primary btn-sm" type="submit">
-                                    <svg class="icon icon-sm me-1">
-                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
-                                    </svg>
-                                    {{ __('Simpan') }}
+                                <button class="btn btn-primary px-3" type="submit">
+                                    <b>{{ __('Simpan') }}</b>
                                 </button>
                             </div>
                         </form>
@@ -108,11 +102,8 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <button class="btn btn-primary btn-sm" type="submit">
-                                    <svg class="icon icon-sm me-1">
-                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
-                                    </svg>
-                                    {{ __('Simpan') }}
+                                <button class="btn btn-primary px-3" type="submit">
+                                    <b>{{ __('Simpan') }}</b>
                                 </button>
                             </div>
                         </form>

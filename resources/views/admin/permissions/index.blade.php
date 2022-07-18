@@ -16,11 +16,8 @@
     <div class="row mb-4">
         <div class="col-md-12">
             @can('permission_create')
-            <a href="{{ route('permissions.create') }}" class="btn btn-primary btn-sm mb-2">
-                <svg class="icon icon-sm me-1">
-                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-plus') }}"></use>
-                </svg>
-                {{ __('Tambah') }}
+            <a href="{{ route('permissions.create') }}" class="btn btn-primary px-3 mb-2">
+                <b>{{ __('Tambah') }}</b>
             </a>
             @endcan
             <div class="card">
@@ -157,13 +154,13 @@
                         form += '<div class="alert alert-info">{{ __("Hapus permission ini? Proses ini tidak bisa dibatalkan.") }}</div>';
                         form += '</div>';
                         form += ' <div class="modal-footer">';
-                        form += '<button type="button" class="btn btn-secondary text-white" id="dismiss-modal">{{ __("Batal") }}</button>';
-                        form += '<button class="btn btn-danger text-white" type="submit">{{ __("Hapus") }}</button>';
+                        form += '<button type="button" class="btn btn-default px-3" id="dismiss-modal"><b>{{ __("Batal") }}</b></button>';
+                        form += '<button class="btn btn-danger text-white" px-3 type="submit"><b>{{ __("Hapus") }}</b></button>';
                         form += '</div>';
                         form += '</form>';
                         deleteForm.innerHTML = form;
                         deleteModal.toggle();
-                        const dismissModalBtn = document.querySelector('#dismiss-modal').addEventListener('click', () => {
+                        document.querySelector('#dismiss-modal').addEventListener('click', () => {
                             deleteModal.hide();
                             $('.modal-backdrop').remove();
                         });

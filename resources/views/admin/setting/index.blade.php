@@ -39,11 +39,8 @@
                                 <label class="form-check-label" for="reset_password_enabled">{{ __('User Forgot Password') }}</label>
                             </div>
                             <div class="mb-2">
-                                <button class="btn btn-primary btn-sm">
-                                    <svg class="icon icon-sm me-1">
-                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
-                                    </svg>
-                                    {{ __('Update') }}
+                                <button class="btn btn-primary px-3">
+                                    <b>{{ __('Update') }}</b>
                                 </button>
                             </div>
                         </form>
@@ -72,11 +69,8 @@
                                 @enderror
                             </div>
                             <div class="mb-2">
-                                <button class="btn btn-primary btn-sm">
-                                    <svg class="icon icon-sm me-1">
-                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-save') }}"></use>
-                                    </svg>
-                                    {{ __('Update') }}
+                                <button class="btn btn-primary px-3">
+                                    <b>{{ __('Update') }}</b>
                                 </button>
                             </div>
                         </form>
